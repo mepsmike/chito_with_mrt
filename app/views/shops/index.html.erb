@@ -1,15 +1,21 @@
-<%= form_tag shops_path , :method => :get do %>
-<%= label_tag( :r_type , "餐廳種類") %>
-<%= select_tag :r_type , options_for_select([['美式餐廳','burgers'], ['下午茶','cafes'], ['義式餐廳','italian']]) %>
-<%= collection_select :mrt,:mrt_id, Mrt.all, :id, :name, :class => "form-control", :prompt => "選擇捷運站"  %>
-<%= submit_tag ("搜尋") %>
+<div class = "container">
+</br>
+<%= form_tag shops_path , :method => :get ,:class=>"form-inline" do %>
+
+<div class= "form-group">
+<%= select_tag :r_type , options_for_select([['美式餐廳','burgers'], ['咖啡廳','cafes'], ['義式餐廳','italian']]) ,:prompt => "選擇餐廳類型",:class => "form-control"%>
+
+
+<%= collection_select :mrt,:mrt_id, Mrt.all, :id, :name,  {:prompt => "選擇捷運站"} ,{:class =>"form-control" }%>
+
+<%= submit_tag "搜尋" , :class => "btn btn-success"%>
 
 <% end %>
-
-
-
-
-<table >
+</div>
+</div>
+</br>
+<div class="container">
+<table class= "table">
 	<% @shops.businesses.each do |s| %>
 	<tr>
 		<% if s.respond_to?(:image_url) %>
@@ -29,3 +35,4 @@
 
 
 </table>
+</div>
