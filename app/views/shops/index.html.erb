@@ -1,6 +1,7 @@
 <%= form_tag shops_path , :method => :get do %>
 <%= label_tag( :r_type , "餐廳種類") %>
 <%= select_tag :r_type , options_for_select([['美式餐廳','burgers'], ['下午茶','cafes'], ['義式餐廳','italian']]) %>
+<%= collection_select :mrt,:mrt_id, Mrt.all, :id, :name, :class => "form-control", :prompt => "選擇捷運站"  %>
 <%= submit_tag ("搜尋") %>
 
 <% end %>
