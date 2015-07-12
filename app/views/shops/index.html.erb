@@ -1,0 +1,30 @@
+<%= form_tag shops_path , :method => :get do %>
+<%= label_tag( :r_type , "餐廳種類") %>
+<%= select_tag :r_type , options_for_select([['美式餐廳','burgers'], ['下午茶','cafes'], ['義式餐廳','italian']]) %>
+<%= submit_tag ("搜尋") %>
+
+<% end %>
+
+
+
+
+<table >
+	<% @shops.businesses.each do |s| %>
+	<tr>
+		<% if s.respond_to?(:image_url) %>
+  		<td><%= image_tag s.image_url %></td>
+		<% end %>
+		<td><%= s.name %></td>
+		<td><%= s.location.address.join("")%></td>
+		<% if s.respond_to?(:display_phone) %>
+			<td><%= s.display_phone %></td>
+		<%end %>
+		<td><%= s.rating %></td>
+		<td><%= s.distance.to_i %>公尺</td>
+
+	</tr>
+
+	<% end %>
+
+
+</table>
