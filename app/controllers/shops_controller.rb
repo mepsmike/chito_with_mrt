@@ -9,12 +9,11 @@ class ShopsController < ApplicationController
 			
 			
 
-			params = { category_filter: @r_type}
+			params = { category_filter: @r_type, sort:"1"}
 			coordinates = {latitude: @station.latitude, longitude: @station.longitude}
 			@shops = Yelp.client.search_by_coordinates(coordinates, params) 
 		
-			
-
+		
 		else
 			params = {  }
 
@@ -25,6 +24,6 @@ class ShopsController < ApplicationController
 
 	end
 
-	
+
 
 end

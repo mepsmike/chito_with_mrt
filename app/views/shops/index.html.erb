@@ -19,7 +19,7 @@
 	<% @shops.businesses.each do |s| %>
 	<tr>
 		<% if s.respond_to?(:image_url) %>
-  		<td><%= image_tag s.image_url %></td>
+  		<td><%= image_tag s.image_url ,:class => "img-circle"%></td>
 		<% end %>
 		<td><%= s.name %></td>
 		<td><%= s.location.address.join("")%></td>
@@ -28,7 +28,7 @@
 		<%end %>
 		<td><%= s.rating %></td>
 		<td><%= s.distance.to_i %>公尺</td>
-
+		
 	</tr>
 
 	<% end %>
